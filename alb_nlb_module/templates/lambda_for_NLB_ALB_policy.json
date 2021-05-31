@@ -1,0 +1,93 @@
+{
+
+    "Version": "2012-10-17",
+    
+    "Statement": [
+    
+    {
+    
+    "Action": [
+    
+    "logs:CreateLogGroup",
+    
+    "logs:CreateLogStream",
+    
+    "logs:PutLogEvents"
+    
+    ],
+    
+    "Resource": [
+    
+    "arn:aws:logs:*:*:*"
+    
+    ],
+    
+    "Effect": "Allow",
+    
+    "Sid": "LambdaLogging"
+    
+    },
+    
+    {
+    
+    "Action": [
+    
+    "s3:Get*",
+    
+    "s3:PutObject",
+    
+    "s3:CreateBucket",
+    
+    "s3:ListBucket",
+    
+    "s3:ListAllMyBuckets"
+    
+    ],
+    
+    "Resource": "*",
+    
+    "Effect": "Allow",
+    
+    "Sid": "S3"
+    
+    },
+    
+    {
+    
+    "Action": [
+    
+    "elasticloadbalancing:Describe*",
+    
+    "elasticloadbalancing:RegisterTargets",
+    
+    "elasticloadbalancing:DeregisterTargets"
+    
+    ],
+    
+    "Resource": "*",
+    
+    "Effect": "Allow",
+    
+    "Sid": "ELB"
+    
+    },
+    
+    {
+    
+    "Action": [
+    
+    "cloudwatch:putMetricData"
+    
+    ],
+    
+    "Resource": "*",
+    
+    "Effect": "Allow",
+    
+    "Sid": "CW"
+    
+    }
+    
+    ]
+    
+    }

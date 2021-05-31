@@ -1,7 +1,7 @@
 variable "vpc_id" {
 }
 
-variable "alb_name" {
+variable "nlb_name" {
   default= "alb-behind-nlb"
 }
 
@@ -26,4 +26,27 @@ variable "attach_ports_lb" {
 
 variable "lambda_role_name" {
   default = "nlb-alb-tg-lambda-role"
+}
+
+variable "nlb_inbound_ports" {
+  default = [
+  {
+    from_port = 80
+    to_port =   80
+    cidr_block = ["10.0.0.0/8"]
+  }
+  ]
+  description = "Specify NLB Inbound Ports with list of maps as needed"
+}
+
+locals {
+  vpc_cidr_block = data.aws_vpc.main_vpc.cidr_block
+}
+
+variable "alb_dns_name" {
+  default = ""
+}
+
+variable "log_bucket_name" {
+  default = ""
 }
